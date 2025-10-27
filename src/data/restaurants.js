@@ -2,6 +2,9 @@
 // isPartner: true = 발견 탭에 표시되는 제휴 업체
 // isPartner: false = 지도 탭에만 표시되는 일반 업체
 
+
+// GitHub Pages 배포를 위한 base URL 설정
+const BASE_URL = import.meta.env.BASE_URL;
 export const restaurantsData = [
   // ===== 제휴 업체 (Partner Restaurants) =====
   {
@@ -19,7 +22,7 @@ export const restaurantsData = [
     reviewCount: 234,
     ecoBonus: '다회용기 포장 시 할인 혜택 제공!',
     rank: 1,
-    image: '/gunchobab.jpg',
+    image: `${BASE_URL}gunchobab.jpg`,
     isPartner: true // 제휴 업체
   },
   {
@@ -37,7 +40,7 @@ export const restaurantsData = [
     reviewCount: 567,
     ecoBonus: '다회용기 지참 시 포장 할인 혜택',
     rank: 2,
-    image: '/acornstor.jpg',
+    image: `${BASE_URL}acornstor.jpg`,
     isPartner: true // 제휴 업체
   },
   {
@@ -55,7 +58,7 @@ export const restaurantsData = [
     reviewCount: 156,
     ecoBonus: '다회용기 지참 시 포장 할인',
     rank: 3,
-    image: '/clover.jpg',
+    image: `${BASE_URL}clover.jpg`,
     isPartner: true // 제휴 업체
   },
   {
@@ -73,7 +76,7 @@ export const restaurantsData = [
     reviewCount: 203,
     ecoBonus: '다회용기 지참시 추가 할인',
     rank: 4,
-    image: '/vegeept.jpg',
+    image: `${BASE_URL}vegeept.jpg`,
     isPartner: true // 제휴 업체
   },
   {
@@ -91,7 +94,7 @@ export const restaurantsData = [
     reviewCount: 128,
     ecoBonus: '다회용기 지참 시 볶음밥 추가할인',
     rank: 5,
-    image: '/santabee.jpg',
+    image: `${BASE_URL}santabee.jpg`,
     isPartner: true // 제휴 업체
   },
   {
@@ -109,7 +112,7 @@ export const restaurantsData = [
     reviewCount: 167,
     ecoBonus: '텀블러 지참 시 커피 무료 리필',
     rank: 6,
-    image: '/veganique.jpg',
+    image: `${BASE_URL}veganique.jpg`,
     isPartner: true // 제휴 업체
   },
 
@@ -129,7 +132,7 @@ export const restaurantsData = [
     reviewCount: 342,
     ecoBonus: '다회용기 지참 시 1,000원 할인',
     rank: 7,
-    image: '/momiji.jpg',
+    image: `${BASE_URL}momiji.jpg`,
     isPartner: false
   },
   {
@@ -147,7 +150,7 @@ export const restaurantsData = [
     reviewCount: 456,
     ecoBonus: '다회용기 포장 시 500원 할인',
     rank: 8,
-    image: '/yuyaketokyo.jpg',
+    image: `${BASE_URL}yuyaketokyo.jpg`,
     isPartner: false
   },
   {
@@ -165,7 +168,7 @@ export const restaurantsData = [
     reviewCount: 528,
     ecoBonus: '다회용기 지참 시 사이드 메뉴 추가 서비스',
     rank: 9,
-    image: '/jindonburi.jpg',
+    image: `${BASE_URL}jindonburi.jpg`,
     isPartner: false
   },
   {
@@ -183,7 +186,7 @@ export const restaurantsData = [
     reviewCount: 389,
     ecoBonus: '다회용기 지참 시 닭고기 추가 제공',
     rank: 10,
-    image: '/kkai.jpg',
+    image: `${BASE_URL}kkai.jpg`,
     isPartner: false
   },
   {
@@ -201,7 +204,7 @@ export const restaurantsData = [
     reviewCount: 267,
     ecoBonus: '다회용기 포장 시 음료 무료 제공',
     rank: 11,
-    image: '/simplist.jpg',
+    image: `${BASE_URL}simplist.jpg`,
     isPartner: false
   },
   {
@@ -219,7 +222,7 @@ export const restaurantsData = [
     reviewCount: 312,
     ecoBonus: '다회용기 지참 시 사이드 요리 할인',
     rank: 12,
-    image: '/amin.jpg',
+    image: `${BASE_URL}amin.jpg`,
     isPartner: false
   },
   {
@@ -237,7 +240,7 @@ export const restaurantsData = [
     reviewCount: 289,
     ecoBonus: '다회용기 포장 시 10% 할인',
     rank: 13,
-    image: '/via37.jpg',
+    image: `${BASE_URL}via37.jpg`,
     isPartner: false
   },
   {
@@ -255,7 +258,7 @@ export const restaurantsData = [
     reviewCount: 345,
     ecoBonus: '다회용기 지참 시 밥 리필 무료',
     rank: 14,
-    image: '/nangman.jpg',
+    image: `${BASE_URL}nangman.jpg`,
     isPartner: false
   },
   {
@@ -273,7 +276,7 @@ export const restaurantsData = [
     reviewCount: 2014,
     ecoBonus: '다회용기 포장 시 초밥 1피스 추가',
     rank: 15,
-    image: '/salmonchobap.jpg',
+    image: `${BASE_URL}salmonchobap.jpg`,
     isPartner: false
   },
 
@@ -293,7 +296,7 @@ export const restaurantsData = [
     reviewCount: 678,
     ecoBonus: '다회용기 지참 시 토핑 추가 서비스',
     rank: 16,
-    image: '/bowlo.jpg',
+    image: `${BASE_URL}bowlo.jpg`,
     isPartner: false
   },
   {
@@ -311,7 +314,7 @@ export const restaurantsData = [
     reviewCount: 561,
     ecoBonus: '텀블러 지참 시 10% 할인',
     rank: 17,
-    image: '/bellapraha.jpg',
+    image: `${BASE_URL}bellapraha.jpg`,
     isPartner: false
   },
   {
@@ -329,7 +332,7 @@ export const restaurantsData = [
     reviewCount: 512,
     ecoBonus: '텀블러 지참 시 음료 300원 할인',
     rank: 18,
-    image: '/waffleitup.jpg',
+    image: `${BASE_URL}waffleitup.jpg`,
     isPartner: false
   },
   {
@@ -347,7 +350,7 @@ export const restaurantsData = [
     reviewCount: 389,
     ecoBonus: '텀블러 지참 시 작은 쿠키 서비스',
     rank: 19,
-    image: '/tianpang.jpg',
+    image: `${BASE_URL}tianpang.jpg`,
     isPartner: false
   },
   {
@@ -365,7 +368,7 @@ export const restaurantsData = [
     reviewCount: 1388,
     ecoBonus: '텀블러 지참 시 커피 200원 할인',
     rank: 20,
-    image: '/secretbakery.jpg',
+    image: `${BASE_URL}secretbakery.jpg`,
     isPartner: false
   },
   {
@@ -383,7 +386,7 @@ export const restaurantsData = [
     reviewCount: 1202,
     ecoBonus: '텀블러 지참 시 커피 300원 할인',
     rank: 21,
-    image: '/eggdrop.jpg',
+    image: `${BASE_URL}eggdrop.jpg`,
     isPartner: false
   },
   {
@@ -401,7 +404,7 @@ export const restaurantsData = [
     reviewCount: 1202,
     ecoBonus: '다회용기 포장 시 10% 할인',
     rank: 22,
-    image: '/greekday.jpg',
+    image: `${BASE_URL}greekday.jpg`,
     isPartner: false
   },
   {
@@ -419,7 +422,7 @@ export const restaurantsData = [
     reviewCount: 1202,
     ecoBonus: '다회용기 포장 시 10% 할인',
     rank: 23,
-    image: '/doogoong.jpg',
+    image: `${BASE_URL}doogoong.jpg`,
     isPartner: false
   },
   {
@@ -437,7 +440,7 @@ export const restaurantsData = [
     reviewCount: 202,
     ecoBonus: "텀블러 픽업 시 10% 할인",
     rank: 24,
-    image: '/coffeedoga.jpg',
+    image: `${BASE_URL}coffeedoga.jpg`,
     isPartner: false
   },
   {
@@ -455,7 +458,7 @@ export const restaurantsData = [
     reviewCount: 555,
     ecoBonus: "포장 픽업 시 10% 할인",
     rank: 25,
-    image: '/strengscoffee.jpg',
+    image: `${BASE_URL}strengscoffee.jpg`,
     isPartner: false
   },
   {
@@ -473,7 +476,7 @@ export const restaurantsData = [
     reviewCount: 200,
     ecoBonus: "텀블러 주문 시 500원 할인",
     rank: 26,
-    image: '/favorite.jpg',
+    image: `${BASE_URL}favorite.jpg`,
     isPartner: false
   },
   {
@@ -491,7 +494,7 @@ export const restaurantsData = [
     reviewCount: 287,
     ecoBonus: "텀블러 주문 시 미니스콘 서비스",
     rank: 27,
-    image: '/cafemoon.jpg',
+    image: `${BASE_URL}cafemoon.jpg`,
     isPartner: false
   },
   {
@@ -509,7 +512,7 @@ export const restaurantsData = [
     reviewCount: 188,
     ecoBonus: "다회용기 포장 시 10% 할인",
     rank: 28,
-    image: '/thanksbooks.jpg',
+    image: `${BASE_URL}thanksbooks.jpg`,
     isPartner: false
   },
   {
@@ -527,7 +530,7 @@ export const restaurantsData = [
     reviewCount: 534,
     ecoBonus: "다회용기 포장 시 10% 할인",
     rank: 29,
-    image: '/ggobugi.jpg',
+    image: `${BASE_URL}ggobugi.jpg`,
     isPartner: false
   },
   {
@@ -545,7 +548,7 @@ export const restaurantsData = [
     reviewCount: 106,
     ecoBonus: "다회용기 포장 시 10% 할인",
     rank: 30,
-    image: '/bibis.jpg',
+    image: `${BASE_URL}bibis.jpg`,
     isPartner: false
   },
   {
@@ -563,7 +566,7 @@ export const restaurantsData = [
     reviewCount: 137,
     ecoBonus: "다회용기 포장 시 10% 할인",
     rank: 31,
-    image: '/gomida.jpg',
+    image: `${BASE_URL}gomida.jpg`,
     isPartner: false
   },
   {
@@ -581,7 +584,7 @@ export const restaurantsData = [
     reviewCount: 344,
     ecoBonus: '다회용기 포장 시 오징어 튀김 서비스',
     rank: 32,
-    image: '/happycook.jpg',
+    image: `${BASE_URL}happycook.jpg`,
     isPartner: false
   },
   {
@@ -599,7 +602,7 @@ export const restaurantsData = [
     reviewCount: 838,
     ecoBonus: '다회용기 포장 시 토핑 1개 서비스',
     rank: 33,
-    image: '/myungdongjeongol.jpg',
+    image: `${BASE_URL}myungdongjeongol.jpg`,
     isPartner: false
   },
   {
@@ -617,7 +620,7 @@ export const restaurantsData = [
     reviewCount: 1049,
     ecoBonus: '다회용기 지참 시 유부초밥 1피스 서비스',
     rank: 34,
-    image: '/dongseong.jpg',
+    image: `${BASE_URL}dongseong.jpg`,
     isPartner: false
   },
   {
@@ -635,7 +638,7 @@ export const restaurantsData = [
     reviewCount: 953,
     ecoBonus: '다회용기 비조리 포장 시 떡사리 서비스',
     rank: 35,
-    image: '/hanamaru.jpg',
+    image: `${BASE_URL}hanamaru.jpg`,
     isPartner: false
   },
   {
@@ -653,7 +656,7 @@ export const restaurantsData = [
     reviewCount: 298,
     ecoBonus: '다회용기 포장 시 탄산음료 서비스',
     rank: 36,
-    image: '/dabanggol.jpg',
+    image: `${BASE_URL}dabanggol.jpg`,
     isPartner: false
   },
   {
@@ -671,7 +674,7 @@ export const restaurantsData = [
     reviewCount: 264,
     ecoBonus: '다회용기 포장 시 10% 할인',
     rank: 37,
-    image: '/miseong.jpg',
+    image: `${BASE_URL}miseong.jpg`,
     isPartner: false
   },
   {
@@ -689,7 +692,7 @@ export const restaurantsData = [
     reviewCount: 2721,
     ecoBonus: '텀블러 지참 시 커피 300원 할인',
     rank: 38,
-    image: '/thaistory.jpg',
+    image: `${BASE_URL}thaistory.jpg`,
     isPartner: false
   },
   {
@@ -707,7 +710,7 @@ export const restaurantsData = [
     reviewCount: 175,
     ecoBonus: '다회용기 지참 시 차슈 추가 서비스',
     rank: 39,
-    image: '/zippang.jpg',
+    image: `${BASE_URL}zippang.jpg`,
     isPartner: false
   },
   {
@@ -725,7 +728,7 @@ export const restaurantsData = [
     reviewCount: 208,
     ecoBonus: '다회용기 포장 시 스프링롤 1개 서비스',
     rank: 40,
-    image: '/hongryukitchen.jpg',
+    image: `${BASE_URL}hongryukitchen.jpg`,
     isPartner: false
   },
   {
@@ -743,7 +746,7 @@ export const restaurantsData = [
     reviewCount: 1423,
     ecoBonus: '다회용기 지참 시 사이드 메뉴 500원 할인',
     rank: 41,
-    image: '/oishi.jpg',
+    image: `${BASE_URL}oishi.jpg`,
     isPartner: false
   },
   {
@@ -761,7 +764,7 @@ export const restaurantsData = [
     reviewCount: 2865,
     ecoBonus: '다회용기 포장 시 500원 할인',
     rank: 42,
-    image: '/thugsbunny.jpg',
+    image: `${BASE_URL}thugsbunny.jpg`,
     isPartner: false
   },
   {
@@ -779,7 +782,7 @@ export const restaurantsData = [
     reviewCount: 91,
     ecoBonus: '비선물포장 선택 시 초콜릿 1개 서비스',
     rank: 43,
-    image: '/daesungmanbo.jpg',
+    image: `${BASE_URL}daesungmanbo.jpg`,
     isPartner: false
   },
   {
@@ -797,7 +800,7 @@ export const restaurantsData = [
     reviewCount: 40,
     ecoBonus: '다회용기 지참 시 사이드 1개 서비스',
     rank: 44,
-    image: '/banchansori.jpg',
+    image: `${BASE_URL}banchansori.jpg`,
     isPartner: false
   },
   {
@@ -815,7 +818,7 @@ export const restaurantsData = [
     reviewCount: 423,
     ecoBonus: '다회용기 포장 시 300원 할인',
     rank: 45,
-    image: '/namiljip.jpg',
+    image: `${BASE_URL}namiljip.jpg`,
     isPartner: false
   },
   {
@@ -833,7 +836,7 @@ export const restaurantsData = [
     reviewCount: 969,
     ecoBonus: '다회용기 지참 시 콜라 무료 증정',
     rank: 46,
-    image: '/chokbal.jpg',
+    image: `${BASE_URL}chokbal.jpg`,
     isPartner: false
   },
   {
@@ -851,7 +854,7 @@ export const restaurantsData = [
     reviewCount: 1540,
     ecoBonus: '다회용기 포장 시 500원 할인',
     rank: 47,
-    image: '/gomida2.jpg',
+    image: `${BASE_URL}gomida2.jpg`,
     isPartner: false
   },
   {
@@ -869,7 +872,7 @@ export const restaurantsData = [
     reviewCount: 389,
     ecoBonus: '다회용기 지참 시 10% 할인',
     rank: 48,
-    image: '/poutine.jpg',
+    image: `${BASE_URL}poutine.jpg`,
     isPartner: false
   },
   {
@@ -887,7 +890,7 @@ export const restaurantsData = [
     reviewCount: 612,
     ecoBonus: '텀블러 지참 시 커피 400원 할인',
     rank: 49,
-    image: '/sae.jpg',
+    image: `${BASE_URL}sae.jpg`,
     isPartner: false
   },
   {
@@ -905,7 +908,7 @@ export const restaurantsData = [
     reviewCount: 723,
     ecoBonus: '텀블러 지참 시 음료 300원 할인',
     rank: 50,
-    image: '/yangzee.jpg',
+    image: `${BASE_URL}yangzee.jpg`,
     isPartner: false
   },
   {
@@ -923,7 +926,7 @@ export const restaurantsData = [
     reviewCount: 257,
     ecoBonus: '텀블러 지참 시 음료 400원 할인',
     rank: 51,
-    image: '/spoonpoon.jpg',
+    image: `${BASE_URL}spoonpoon.jpg`,
     isPartner: false
   },
   {
@@ -941,7 +944,7 @@ export const restaurantsData = [
     reviewCount: 92,
     ecoBonus: '텀블러 지참 시 음료 300원 할인',
     rank: 52,
-    image: '/coffeesmith.jpg',
+    image: `${BASE_URL}coffeesmith.jpg`,
     isPartner: false
   },
   {
@@ -959,7 +962,7 @@ export const restaurantsData = [
     reviewCount: 1107,
     ecoBonus: '다회용기 포장 시 음료 1개 서비스',
     rank: 53,
-    image: '/osulloc.jpg',
+    image: `${BASE_URL}osulloc.jpg`,
     isPartner: false
   },
   {
@@ -977,7 +980,7 @@ export const restaurantsData = [
     reviewCount: 678,
     ecoBonus: '텀블러 지참 시 음료 300원 할인',
     rank: 54,
-    image: '/twosome.jpg',
+    image: `${BASE_URL}twosome.jpg`,
     isPartner: false
   },
   {
@@ -995,7 +998,7 @@ export const restaurantsData = [
     reviewCount: 1495,
     ecoBonus: '다회용기 지참 시 포장 500원 할인',
     rank: 55,
-    image: '/hankimaki.jpg',
+    image: `${BASE_URL}hankimaki.jpg`,
     isPartner: false
   },
   {
@@ -1013,7 +1016,7 @@ export const restaurantsData = [
     reviewCount: 1203,
     ecoBonus: '다회용기 지참 시 포장 500원 할인',
     rank: 56,
-    image: '/papano.jpg',
+    image: `${BASE_URL}papano.jpg`,
     isPartner: false
   },
   {
@@ -1031,7 +1034,7 @@ export const restaurantsData = [
     reviewCount: 847,
     ecoBonus: '다회용기 포장 시 10% 할인',
     rank: 57,
-    image: '/cafepera.jpg',
+    image: `${BASE_URL}cafepera.jpg`,
     isPartner: false
   }
 
