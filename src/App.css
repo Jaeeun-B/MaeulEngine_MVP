@@ -1,0 +1,775 @@
+/* Tossface */
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== 온보딩 ===== */
+.onboarding-screen {
+  position: fixed; inset: 0;
+  background: linear-gradient(135deg,#4CAF50 0%, #81C784 100%);
+  display: none; justify-content: center; align-items: center;
+  z-index: 10000; padding: 24px;
+}
+.onboarding-screen.active { display: flex; }
+
+.onboarding-container {
+  width: 100%; max-width: 420px;
+  background: #fff; border-radius: 20px; padding: 28px 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+}
+
+.onboarding-title {
+  font-size: 22px; font-weight: 800; color: #2E7D32; margin-bottom: 14px;
+}
+
+.onboarding-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 12px 0 18px; }
+.onboarding-list li { background:#F8FBF8; border:1px solid #E0F2E9; border-radius: 12px; padding: 12px; }
+.onboarding-list li strong { display:block; color:#2E7D32; margin-bottom: 6px; }
+
+/* ▼▼▼ 이 부분을 수정했습니다 ▼▼▼ */
+.onboarding-title .icon,
+.onboarding-list li strong .icon {
+  font-family: 'Tossface', sans-serif;
+  margin-right: 8px; /* 아이콘과 텍스트 사이 간격 조정 */
+}
+/* ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲ */
+
+.onboarding-list li span { color:#555; font-size: 14px; line-height: 1.5; }
+
+.onboarding-desc { color:#444; font-size:16px; line-height:1.8; text-align:center; margin: 18px 0 26px; }
+
+.onboard-btn {
+  width: 100%; padding: 14px 16px; border: none; border-radius: 12px;
+  background: #4CAF50; color: #fff; font-weight: 800; font-size: 16px; cursor: pointer;
+  box-shadow: 0 8px 24px rgba(76,175,80,.35);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.onboard-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(76,175,80,.45); }
+
+/* 데스크탑 앱 프레임을 쓰는 경우, 프레임 내부에 맞추고 싶다면: */
+@media (min-width: 431px) {
+  .app-frame .onboarding-screen { position: absolute; }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f5f5f5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 성능 최적화 */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.restaurant-card,
+.post-item,
+.article-card,
+.menu-item,
+.modal-content {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* 애니메이션 최적화 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 로딩 화면 */
+.loading-screen {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: #4CAF50; display: flex; justify-content: center; align-items: center;
+  z-index: 10000; opacity: 0; pointer-events: none; transition: opacity 0.5s;
+}
+.loading-screen.active { opacity: 1; pointer-events: all; }
+.loading-text {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.7} }
+
+/* 로그인 화면 */
+.login-screen {
+  position: fixed; inset: 0; background: linear-gradient(135deg,#4CAF50 0%,#81C784 100%);
+  display:flex; justify-content:center; align-items:center; z-index:9999; opacity:0; pointer-events:none; transition:.5s;
+}
+.login-screen.active { opacity: 1; pointer-events: all; }
+.login-container {
+  background:#fff; padding:40px; border-radius:20px; box-shadow:0 20px 60px rgba(0,0,0,.3);
+  width:90%; max-width:400px; animation: slideUp .5s;
+}
+@keyframes slideUp { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+.login-title {
+  text-align:center;
+  margin-bottom:10px;
+  font-size:32px;
+  color:#4CAF50;
+  font-weight:bold;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.login-subtitle { text-align:center; margin-bottom:30px; color:#666; font-size:14px; }
+.login-input {
+  width:100%; padding:15px; margin-bottom:15px; border:2px solid #e0e0e0; border-radius:10px; font-size:16px; transition:.3s;
+}
+.login-input:focus { outline:none; border-color:#4CAF50; }
+.login-btn {
+  width:100%; padding:15px; background:#4CAF50; color:#fff; border:none; border-radius:10px; font-size:18px; font-weight:bold; cursor:pointer; transition:.3s;
+}
+.login-btn:hover { background:#45a049; transform:translateY(-2px); box-shadow:0 5px 15px rgba(76,175,80,.3); }
+
+/* 메인 앱 */
+.app-container {
+  max-width:100%;
+  width:100%;
+  margin:0 auto;
+  background:#f5f5f5;
+  min-height:100vh;
+  position:relative;
+  opacity:0;
+  pointer-events:none;
+  transition:.5s;
+}
+.app-container.active { opacity:1; pointer-events:all; }
+
+/* 반응형 제한 */
+@media (min-width: 431px) {
+  .app-container {
+    max-width:430px;
+  }
+  .bottom-nav {
+    max-width:430px;
+  }
+}
+
+/* 헤더 */
+.header { background:#fff; padding:15px; box-shadow:0 2px 10px rgba(0,0,0,.05); position:sticky; top:0; z-index:100; }
+.search-container { position:relative; margin-bottom:15px; }
+.search-bar {
+  width:100%; padding:12px 45px 12px 15px; border:2px solid #e0e0e0; border-radius:25px; font-size:16px; transition:.3s;
+}
+.search-bar:focus { outline:none; border-color:#4CAF50; box-shadow:0 0 0 3px rgba(76,175,80,.1); }
+.search-icon {
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+  font-size:20px;
+  color:#4CAF50;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.quick-filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px; /* 헤더의 다른 요소와 간격 유지 */
+}
+.filter-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 25px; /* 더 부드러운 느낌을 위해 완전한 캡슐 형태로 */
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1.5px solid #E0E0E0; /* 비활성화 상태의 테두리 */
+  background: #fff; /* 비활성화 상태의 배경 */
+  color: #555; /* 비활성화 상태의 글자색 */
+  transition: all 0.2s ease-in-out; /* 부드러운 전환 효과 */
+  text-align: center;
+}
+
+/* ▼▼▼ 활성화된 버튼 스타일 (핵심) ▼▼▼ */
+.filter-btn.active {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A); /* 세련된 녹색 그라데이션 */
+  color: #fff; /* 흰색 글자로 가독성 확보 */
+  border-color: transparent; /* 활성화 시 테두리 제거 */
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3); /* 입체감을 주는 그림자 */
+  transform: translateY(-2px); /* 살짝 위로 올라오는 효과 */
+}
+
+/* ▼▼▼ 비활성화된 버튼에 마우스를 올렸을 때 ▼▼▼ */
+.filter-btn:not(.active):hover {
+  background-color: #F1F8E9; /* 옅은 녹색 배경으로 변경 */
+  border-color: #a5d6a7; /* 테두리도 녹색 계열로 변경 */
+  color: #33691E; /* 짙은 녹색 텍스트로 강조 */
+}
+
+/* ▼▼▼ 활성화된 버튼에 마우스를 올렸을 때 ▼▼▼ */
+.filter-btn.active:hover {
+  filter: brightness(1.1); /* 살짝 밝아지는 효과로 피드백 */
+}
+
+/* 메인 컨텐츠 */
+.main-content { padding:20px 15px 80px; background:#fff; min-height:calc(100vh - 80px); }
+.section-title { font-size:24px; font-weight:bold; margin-bottom:10px; color:#333; }
+.location-info {
+  color:#666;
+  margin-bottom:20px;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.location-icon {
+  color:#4CAF50;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 레스토랑 리스트 */
+.restaurant-list { display:flex; flex-direction:column; gap:15px; }
+.restaurant-card {
+  background:#fff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+  transition:transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+  position:relative;
+  transform: translateZ(0);
+}
+.restaurant-card:hover {
+  transform:translateY(-5px) translateZ(0);
+  box-shadow:0 5px 25px rgba(0,0,0,.15);
+}
+
+.rank-badge {
+  position:absolute; top:10px; left:10px;
+  background:#FFFFFF;
+  color:#000000;
+  padding:6px 12px; border-radius:20px; font-weight:800; font-size:14px; z-index:10;
+  box-shadow:0 2px 6px rgba(0,0,0,.10); border:1px solid rgba(0,0,0,.06);
+}
+
+.eco-badge {
+  position:absolute; top:10px; right:10px;
+  background:#FFFFFF;
+  color:#2E7D32;
+  width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; z-index:10; box-shadow:0 2px 6px rgba(0,0,0,.10); border:1px solid rgba(0,0,0,.06);
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.save-btn {
+  position:absolute; bottom:10px; right:10px;
+  background:#fff; border:none; border-radius:50%;
+  width:40px; height:40px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; cursor:pointer; z-index:10;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  transition:.3s;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.save-btn:hover { transform:scale(1.1); }
+.save-btn.saved { color:#e74c3c; }
+
+.restaurant-image {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  transition:transform .2s ease;
+  transform: translateZ(0);
+}
+.restaurant-card:hover .restaurant-image {
+  transform:scale(1.05) translateZ(0);
+}
+
+.restaurant-info { padding:15px; }
+.restaurant-name { font-size:18px; font-weight:bold; margin-bottom:5px; color:#212121; }
+.restaurant-desc { font-size:13px; color:#757575; font-style:italic; margin-bottom:8px; }
+.restaurant-rating { display:flex; align-items:center; gap:5px; font-size:14px; }
+.star {
+  color:#FFC107;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 하단 네비게이션 */
+.bottom-nav {
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  background:#fff;
+  box-shadow:0 -3px 15px rgba(0,0,0,.1);
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  z-index:1000;
+}
+.nav-item { flex:1; text-align:center; padding:8px; cursor:pointer; transition:.3s; }
+.nav-item:hover { transform:translateY(-2px); }
+.nav-item.active .nav-icon, .nav-item.active .nav-label { color:#4CAF50; }
+.nav-icon {
+  font-size:24px;
+  color:#999;
+  margin-bottom:3px;
+  transition:color .3s;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.nav-label { font-size:11px; color:#999; transition:color .3s; }
+
+/* 페이지 스타일 */
+.page { display:none; animation:fadeIn .5s; background:#f5f5f5; }
+.page.active { display:block; }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+/* 빈 상태 */
+.empty-state { text-align:center; padding:50px 20px; color:#999; background:#fff; border-radius:15px; margin:20px 0; }
+.empty-icon {
+  font-size:48px;
+  margin-bottom:15px;
+  color:#ddd;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 서포터즈 */
+.supporters-header {
+  background:linear-gradient(135deg,#4CAF50,#81C784);
+  color:#fff;
+  padding:30px 20px;
+  text-align:center;
+}
+.supporters-header h2 {
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.article-card {
+  background:#fff;
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+  transition:transform .2s ease, box-shadow .2s ease;
+  transform: translateZ(0);
+}
+.article-card:hover {
+  transform:translateY(-3px) translateZ(0);
+  box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+.article-card h3 {
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* 게시판 */
+.board-tabs {
+  display:flex;
+  gap:10px;
+  padding:15px;
+  background:#fff;
+  border-bottom:1px solid #e0e0e0;
+  position:sticky;
+  top:0;
+  z-index:100;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+}
+.board-tabs::-webkit-scrollbar {
+  display: none;
+}
+.board-tab {
+  padding:8px 16px;
+  border-radius:20px;
+  border:1px solid #e0e0e0;
+  background:#fff;
+  cursor:pointer;
+  transition:.2s;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.board-tab.active { background:#4CAF50; color:#fff; border-color:#4CAF50; }
+.post-item {
+  padding:15px;
+  border-bottom:1px solid #f0f0f0;
+  transition:all .2s ease;
+  cursor:pointer;
+  background:#fff;
+  border-radius:10px;
+  margin-bottom:10px;
+  box-shadow:0 2px 5px rgba(0,0,0,.05);
+  transform: translateZ(0);
+}
+.post-item:hover {
+  background:#f9f9f9;
+  box-shadow:0 3px 10px rgba(0,0,0,.1);
+  transform:translateY(-2px) translateZ(0);
+}
+.post-badge {
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:12px;
+  font-size:11px;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+/* 프로필 */
+.profile-header {
+  background:linear-gradient(135deg,#4CAF50,#81C784);
+  padding:30px;
+  text-align:center;
+  color:#fff;
+}
+.profile-avatar {
+  width:80px;
+  height:80px;
+  background:#fff;
+  border-radius:50%;
+  margin:0 auto 15px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:36px;
+  color:#4CAF50;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.profile-menu { padding:20px; background:#f5f5f5; }
+.menu-item {
+  padding:15px;
+  background:#fff;
+  border-radius:10px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  transition:all .2s ease;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transform: translateZ(0);
+}
+.menu-item:hover {
+  background:#f5f5f5;
+  transform:translateX(5px) translateZ(0);
+}
+.challenge-status {
+  background:linear-gradient(135deg,#4CAF50,#81C784);
+  color:#fff;
+  padding:20px;
+  border-radius:15px;
+  margin:20px;
+  text-align:center;
+}
+.challenge-status h3 {
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.challenge-count { font-size:36px; font-weight:bold; margin:10px 0; }
+.challenge-progress { background:rgba(255,255,255,.3); border-radius:10px; height:8px; margin-top:15px; overflow:hidden; }
+.challenge-progress-bar { background:#fff; height:100%; border-radius:10px; transition:width .5s; width:70%; }
+
+/* 모달 */
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.5);
+  z-index:2000;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+.modal.active { display:flex; }
+.modal-content {
+  background:#fff;
+  border-radius:20px;
+  max-width:500px;
+  width:100%;
+  max-height:80vh;
+  overflow-y:auto;
+  animation:modalSlide .3s;
+}
+@keyframes modalSlide { from{transform:translateY(-50px);opacity:0} to{transform:translateY(0);opacity:1} }
+.modal-header {
+  padding:20px;
+  border-bottom:1px solid #e0e0e0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.modal-body { padding:20px; }
+.close {
+  font-size:28px;
+  font-weight:bold;
+  cursor:pointer;
+  color:#999;
+  transition:.3s;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.close:hover { color:#333; }
+
+/* 레스토랑 상세 */
+.detail-image { width:100%; height:200px; object-fit:cover; border-radius:15px; margin-bottom:15px; }
+.detail-title { font-size:22px; font-weight:bold; margin-bottom:10px; }
+.detail-rating {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:15px;
+  font-size:16px;
+}
+.detail-rating .star {
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.detail-desc { color:#666; font-style:italic; margin-bottom:15px; line-height:1.6; }
+.eco-box { background:#E8F5E9; border:2px solid #4CAF50; border-radius:15px; padding:15px; margin:15px 0; }
+.eco-box-title {
+  font-weight:bold;
+  color:#2E7D32;
+  margin-bottom:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.eco-box-text { color:#2E7D32; line-height:1.6; }
+.detail-info { display:flex; flex-direction:column; gap:10px; margin:15px 0; }
+.info-item { display:flex; align-items:flex-start; gap:10px; }
+.info-icon {
+  color:#999;
+  font-size:18px;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.info-text { color:#666; line-height:1.4; }
+.challenge-btn {
+  width:100%;
+  padding:14px;
+  background:#4CAF50;
+  color:#fff;
+  border:none;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+  margin-top:15px;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.challenge-btn:hover { background:#45a049; transform:translateY(-2px); box-shadow:0 5px 15px rgba(76,175,80,.3); }
+
+/* 게시글 작성 */
+.post-category-select { display:flex; gap:10px; margin-bottom:20px; }
+.category-btn {
+  flex:1;
+  padding:12px;
+  border:2px solid #e0e0e0;
+  background:#fff;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.3s;
+  font-weight:bold;
+}
+.category-btn.active { background:#4CAF50; color:#fff; border-color:#4CAF50; }
+.post-input {
+  width:100%;
+  padding:12px;
+  border:2px solid #e0e0e0;
+  border-radius:10px;
+  font-size:16px;
+  margin-bottom:15px;
+  transition:.3s;
+}
+.post-input:focus { outline:none; border-color:#4CAF50; }
+.post-textarea {
+  width:100%;
+  padding:12px;
+  border:2px solid #e0e0e0;
+  border-radius:10px;
+  font-size:16px;
+  min-height:150px;
+  resize:vertical;
+  margin-bottom:20px;
+  font-family:inherit;
+  transition:.3s;
+}
+.post-textarea:focus { outline:none; border-color:#4CAF50; }
+.modal-buttons { display:flex; gap:10px; }
+.btn-cancel, .btn-submit {
+  flex:1;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+.btn-cancel { background:#e0e0e0; color:#666; }
+.btn-cancel:hover { background:#d0d0d0; }
+.btn-submit { background:#4CAF50; color:#fff; }
+.btn-submit:hover { background:#45a049; transform:translateY(-2px); box-shadow:0 5px 15px rgba(76,175,80,.3); }
+
+/* 게시글 상세 */
+.post-detail-header { margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+.post-detail-category {
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:15px;
+  font-size:12px;
+  font-weight:bold;
+}
+.post-detail-category.review { background:#E3F2FD; color:#1976D2; }
+.post-detail-category.challenge { background:#F3E5F5; color:#7B1FA2; }
+.post-detail-title { font-size:22px; font-weight:bold; margin-bottom:15px; line-height:1.4; }
+.post-detail-meta { color:#999; font-size:14px; margin-bottom:20px; display:flex; gap:10px; }
+.post-detail-content { color:#333; line-height:1.8; white-space:pre-wrap; margin-bottom:20px; }
+.post-actions {
+  display:flex;
+  gap:10px;
+  padding-top:20px;
+  border-top:1px solid #e0e0e0;
+}
+.action-btn {
+  flex:1;
+  padding:12px;
+  background:#f5f5f5;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.3s;
+  font-size:14px;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.action-btn:hover { background:#e8e8e8; }
+
+/* 댓글 섹션 */
+.comments-section {
+  margin-top:30px;
+  padding-top:20px;
+  border-top:2px solid #e0e0e0;
+}
+.comments-title {
+  font-size:16px;
+  font-weight:bold;
+  margin-bottom:15px;
+  color:#333;
+}
+.comment-item {
+  background:#f9f9f9;
+  padding:12px 15px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+.comment-author {
+  font-weight:bold;
+  font-size:13px;
+  color:#4CAF50;
+  margin-bottom:5px;
+}
+.comment-text {
+  font-size:14px;
+  color:#333;
+  line-height:1.5;
+}
+.comment-time {
+  font-size:11px;
+  color:#999;
+  margin-top:5px;
+}
+.comment-input-box {
+  display:flex;
+  gap:10px;
+  margin-top:15px;
+}
+.comment-input {
+  flex:1;
+  padding:12px;
+  border:2px solid #e0e0e0;
+  border-radius:10px;
+  font-size:14px;
+  transition:.3s;
+}
+.comment-input:focus {
+  outline:none;
+  border-color:#4CAF50;
+}
+.comment-submit-btn {
+  padding:12px 20px;
+  background:#4CAF50;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.3s;
+}
+.comment-submit-btn:hover {
+  background:#45a049;
+}
+.delete-btn {
+  padding:8px 16px;
+  background:#ffebee;
+  color:#c62828;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:bold;
+  transition:.3s;
+}
+.delete-btn:hover { background:#ffcdd2; }
+
+/* 플로팅 버튼 */
+.floating-btn {
+  position:fixed;
+  bottom:90px;
+  right:20px;
+  width:60px;
+  height:60px;
+  background:#4CAF50;
+  color:#fff;
+  border:none;
+  border-radius:50%;
+  font-size:32px;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(76,175,80,.4);
+  transition:.3s;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: 'Tossface', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+.floating-btn:hover {
+  background:#45a049;
+  transform:scale(1.1) rotate(90deg);
+  box-shadow:0 6px 20px rgba(76,175,80,.5);
+}
+/* 공지 모달 내 아이콘 Tossface 적용 */
+.modal-body h3 .icon {
+  font-family: 'Tossface', sans-serif !important;
+}
+/* 반응형 */
+@media (max-width: 430px) {
+  .modal-content {
+    margin:10px;
+  }
+  .login-container {
+    padding:30px 20px;
+  }
+  .restaurant-card:hover {
+    transform:none;
+  }
+  .article-card:hover {
+    transform:none;
+  }
+  .post-item:hover {
+    transform:none;
+  }
+}
+
+/* 추가 애니메이션 */
+@keyframes heartBeat {
+  0%, 100% { transform:scale(1); }
+  25% { transform:scale(1.2); }
+  50% { transform:scale(1); }
+}
+.save-btn.saved { animation:heartBeat .5s; }
+
