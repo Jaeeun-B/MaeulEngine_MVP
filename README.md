@@ -3,7 +3,7 @@
 ## 📋 Context
 
 리턴테이블은 이화여대 상권에서 시작된 지역 상권과 환경 중심 맛집 지도 서비스입니다.
-애플리케이션의 챌린지 모드를 통해 다회용기 픽업 서비스를 제공 중인 친환경 가게를 찾아볼 수 있습니다.
+다회용기 픽업 서비스 제휴 업체 검색 및 다회용기 챌린지 참여 기능을 제공합니다.
 
 ---
 
@@ -129,20 +129,20 @@ export const restaurantsData = [
 1. `src/pages/Map.jsx` 파일의 상단에서 API 키를 변경할 수 있습니다:
 
 ```javascript
-const KAKAO_API_KEY = '여기에_당신의_API_키';
+const KAKAO_API_KEY = 'Your_API_Key';
 ```
 
 2. `index.html` 파일의 스크립트 태그도 수정하세요:
 
 ```html
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=여기에_당신의_API_키"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=Your_API_Key"></script>
 ```
 
 ---
 
 ## 📱 주요 화면
 
-1. **지도** - 주변 친환경 가게 검색
+1. **지도** - 주변 친환경 가게(현 이대 상권) 검색
 2. **발견** - 인기 맛집 랭킹
 3. **저장** - 북마크한 가게 목록
 4. **게시판** - 후기 및 챌린지 인증
@@ -178,3 +178,5 @@ MIT License
 ---
 
 **🌱 마을엔진과 함께 지속 가능한 지역 상권을 만들어봐요! 🌱**
+
+Team.마을엔진 - 이화여자대학교 김예원(화공신소재공학과 24), 권민지(통계학과 24), 남기림(컴퓨터공학과 24), 백재은(컴퓨터공학과 24)
