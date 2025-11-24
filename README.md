@@ -122,24 +122,6 @@ export const restaurantsData = [
 
 ---
 
-## 🔧 환경 설정
-
-### 카카오맵 API 키 변경
-
-1. `src/pages/Map.jsx` 파일의 상단에서 API 키를 변경할 수 있습니다:
-
-```javascript
-const KAKAO_API_KEY = 'Your_API_Key';
-```
-
-2. `index.html` 파일의 스크립트 태그도 수정하세요:
-
-```html
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=Your_API_Key"></script>
-```
-
----
-
 ## 📱 주요 화면
 
 1. **지도** - 주변 친환경 가게(현 이대 상권) 검색
