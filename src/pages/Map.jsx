@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { restaurantsData } from '../data/restaurants';
 import '../styles/Map.css';
 
-const KAKAO_API_KEY = '8b3f5a420232f65549b8cea565f5f9d3';
-
 // 카카오맵이 로드될 때까지 대기
 function loadKakaoMaps() {
   return new Promise((resolve, reject) => {
